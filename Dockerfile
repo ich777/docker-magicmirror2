@@ -6,7 +6,7 @@ RUN apt-get update && \
 	apt-get -y install --no-install-recommends curl && \
 	curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
 	apt-get -y install --no-install-recommends nodejs && \
-	npm install express valid-url moment feedme iconv-lite && \
+	npm install express valid-url moment feedme iconv-lite express-ipfilter && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV DATA_DIR="/magicmirror2"
