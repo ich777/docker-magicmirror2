@@ -6,6 +6,7 @@ RUN apt-get update && \
 	apt-get -y install --no-install-recommends unzip curl && \
 	curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
 	apt-get -y install --no-install-recommends nodejs && \
+	npm install express valid-url moment feedme iconv-lite && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV DATA_DIR="/magicmirror2"
@@ -23,6 +24,7 @@ RUN mkdir $DATA_DIR && \
 
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
+COPY /config/ /tmp/
 
 #Server Start
 ENTRYPOINT ["/opt/scripts/start.sh"]
