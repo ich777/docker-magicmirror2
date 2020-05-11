@@ -62,6 +62,8 @@ else
 fi
 chmod -R ${DATA_PERM} ${DATA_DIR}
 
+sleep infinity
+
 echo "---Starting Server---"
 cd ${DATA_DIR}
 npm run server
