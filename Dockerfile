@@ -3,7 +3,7 @@ FROM ich777/debian-baseimage
 LABEL maintainer="admin@minenet.at"
 
 RUN apt-get update && \
-	apt-get -y install --no-install-recommends unzip curl && \
+	apt-get -y install --no-install-recommends curl && \
 	curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
 	apt-get -y install --no-install-recommends nodejs && \
 	npm install express valid-url moment feedme iconv-lite && \
