@@ -60,9 +60,12 @@ if [ ! -f ${DATA_DIR}/config/config.js ]; then
 else
 	echo "---Configuration file found!---"
 fi
+if [ ! -d ${DATA_DIR}/.npm ]; then
+	echo "---Installing, this can take some time please stand by...---"
+	cd ${DATA_DIR}
+	npm install
+fi
 chmod -R ${DATA_PERM} ${DATA_DIR}
-
-sleep infinity
 
 echo "---Starting Server---"
 cd ${DATA_DIR}
