@@ -3,7 +3,7 @@ FROM ich777/debian-baseimage
 LABEL maintainer="admin@minenet.at"
 
 RUN apt-get update && \
-	apt-get -y install --no-install-recommends curl && \
+	apt-get -y install --no-install-recommends curl git-core && \
 	curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
 	apt-get -y install --no-install-recommends nodejs && \
 	npm install express valid-url moment feedme iconv-lite express-ipfilter && \
@@ -25,6 +25,8 @@ RUN mkdir $DATA_DIR && \
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
 COPY /config/ /tmp/
+
+EXPOSE 8080
 
 #Server Start
 ENTRYPOINT ["/opt/scripts/start.sh"]
