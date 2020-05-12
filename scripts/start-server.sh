@@ -118,20 +118,24 @@ if [ ! -d ${DATA_DIR}/.npm ]; then
 		if [ ! -d ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")" ]; then
 			if [[ $line = \Y* ]]; then
 				cd ${DATA_DIR}/modules
+				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//Y /}
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				npm install
 			else
 				cd ${DATA_DIR}/modules
+				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//N /}
 			fi
 		else
 			if [[ $line = \Y* ]]; then
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
+				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git pull
 				npm install
 			else
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
+				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git pull
 			fi
 		fi
@@ -147,20 +151,24 @@ elif [ "${FORCE_UPDATE_MODULES}" == "true" ]; then
 		if [ ! -d ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")" ]; then
 			if [[ $line = \Y* ]]; then
 				cd ${DATA_DIR}/modules
+				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//Y /}
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				npm install
 			else
 				cd ${DATA_DIR}/modules
+				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//N /}
 			fi
 		else
 			if [[ $line = \Y* ]]; then
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
+				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git pull
 				npm install
 			else
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
+				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git pull
 			fi
 		fi
@@ -172,11 +180,13 @@ else
 		if [ ! -d ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")" ]; then
 			if [[ $line = \Y* ]]; then
 				cd ${DATA_DIR}/modules
+				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//Y /}
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				npm install
 			else
 				cd ${DATA_DIR}/modules
+				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//N /}
 			fi
 		else
