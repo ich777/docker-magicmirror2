@@ -1,0 +1,29 @@
+# Paste the links from the git repository wich you want to install here.
+# The Y or N is the indication if the module needs 'npm install' to work.
+# Also you can delete the # in front of any line below to install a module
+# from the corresponding github repository (please don't delete the last line).
+
+#Y https://github.com/ItayXD/MMM-Admin-Interface.git
+#N https://github.com/werthdavid/MMM-BurnIn.git
+#N https://github.com/barnabycolby/MMM-Carousel
+#N https://github.com/Toreke/MMM-Dynamic-Modules.git
+#N https://github.com/Kreshnik/MMM-JokeAPI.git
+#Y https://github.com/slametps/MMM-NetworkConnection.git
+#Y https://github.com/PoOwAa/MMM-network-signal.git
+#N https://github.com/glitch452/MMM-ViewNotifications.git
+#N https://github.com/ulrichwisser/MMM-HTMLSnippet
+#Y https://github.com/eouia/MMM-AVStock
+#N https://github.com/jeroenpeters1986/MMM-bitcoin-portfolio.git
+#Y https://github.com/Elaniobro/MMM-stocks.git
+#N https://github.com/rehne/MMM-Ecosia-Tree-Counter.git
+#N https://github.com/amcolash/MMM-GoogleFit.git
+#Y https://github.com/eouia/MMM-News
+#Y https://github.com/pinsdorf/MMM-WeeklySchedule.git
+#N https://github.com/mihairinzis/MMM-wiki
+#Y https://github.com/Jopyth/MMM-Remote-Control.git
+#Y https://github.com/ronny3050/phone-notification-mirror.git
+#Y https://github.com/ianperrin/MMM-Strava.git
+#N https://github.com/PtrBld/MMM-Scrobbler.git
+#N https://github.com/MitchSS/MMM-Hue.git
+
+# Don't delete this line!
