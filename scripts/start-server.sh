@@ -128,11 +128,11 @@ if [ ! -d ${DATA_DIR}/.npm ]; then
 		else
 			if [[ $line = \Y* ]]; then
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-				git pull ${line//Y /}
+				git pull
 				npm install
 			else
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-				git pull ${line//N /}
+				git pull
 			fi
 		fi
 	done; }
@@ -157,11 +157,11 @@ elif [ "${FORCE_UPDATE_MODULES}" == "true" ]; then
 		else
 			if [[ $line = \Y* ]]; then
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-				git pull ${line//Y /}
+				git pull
 				npm install
 			else
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-				git pull ${line//N /}
+				git pull
 			fi
 		fi
 	done; }
