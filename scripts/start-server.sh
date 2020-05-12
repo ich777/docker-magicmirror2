@@ -108,22 +108,24 @@ else
 	fi
 fi
 
+echo "---Looking for new modules to install---"
 modules=${DATA_DIR}/modules/modules.txt
-grep -v '^\s*$\|^#\|^\s*\#' < $modules | {
-while read -r line
-do
-	if [ ! -d ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")" ]; then
-		if [[ $line = \Y* ]]; then
-			cd ${DATA_DIR}/modules
-			git clone ${line//Y /}
-			cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-			npm install
+if [ ! -d ${DATA_DIR}/.npm ]; then
+	echo "---Updating all modules---"
+	grep -v '^\s*$\|^#\|^\s*\#' < $modules | {
+	while read -r line
+	do
+		if [ ! -d ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")" ]; then
+			if [[ $line = \Y* ]]; then
+				cd ${DATA_DIR}/modules
+				git clone ${line//Y /}
+				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
+				npm install
+			else
+				cd ${DATA_DIR}/modules
+				git clone ${line//N /}
+			fi
 		else
-			cd ${DATA_DIR}/modules
-			git clone ${line//N /}
-		fi
-	else
-		if [ ! -d ${DATA_DIR}/.npm ]; then
 			if [[ $line = \Y* ]]; then
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				git pull ${line//Y /}
@@ -132,20 +134,56 @@ do
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				git pull ${line//N /}
 			fi
-		elif [ "${FORCE_UPDATE}" == "true" ]; then
-				if [[ $line = \Y* ]]; then
-						cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-						git pull ${line//Y /}
-						npm install
-				else
-						cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-						git pull ${line//N /}
-				fi
+		fi
+	done; }
+	echo "---Installing, this can take some time please stand by...---"
+	cd ${DATA_DIR}
+	npm install
+elif [ "${FORCE_UPDATE_MODULES}" == "true" ]; then
+	echo "---Force Update Modules enabled!---"
+	grep -v '^\s*$\|^#\|^\s*\#' < $modules | {
+	while read -r line
+	do
+		if [ ! -d ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")" ]; then
+			if [[ $line = \Y* ]]; then
+				cd ${DATA_DIR}/modules
+				git clone ${line//Y /}
+				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
+				npm install
+			else
+				cd ${DATA_DIR}/modules
+				git clone ${line//N /}
+			fi
+		else
+			if [[ $line = \Y* ]]; then
+				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
+				git pull ${line//Y /}
+				npm install
+			else
+				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
+				git pull ${line//N /}
+			fi
+		fi
+	done; }
+else
+	grep -v '^\s*$\|^#\|^\s*\#' < $modules | {
+	while read -r line
+	do
+		if [ ! -d ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")" ]; then
+			if [[ $line = \Y* ]]; then
+				cd ${DATA_DIR}/modules
+				git clone ${line//Y /}
+				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
+				npm install
+			else
+				cd ${DATA_DIR}/modules
+				git clone ${line//N /}
+			fi
 		else
 			echo "Module '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")' found!"
 		fi
-	fi
-done; }
+	done; }
+fi
 
 echo "---Preparing Server---"
 if [ ! -f ${DATA_DIR}/config/config.js ]; then
@@ -154,11 +192,7 @@ if [ ! -f ${DATA_DIR}/config/config.js ]; then
 else
 	echo "---Configuration file found!---"
 fi
-if [ ! -d ${DATA_DIR}/.npm ]; then
-	echo "---Installing, this can take some time please stand by...---"
-	cd ${DATA_DIR}
-	npm install
-fi
+echo "---Please wait, permissions are set, this can take some time...---"
 chmod -R ${DATA_PERM} ${DATA_DIR}
 
 echo "---Starting Server---"
