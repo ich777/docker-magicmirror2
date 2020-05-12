@@ -52,6 +52,7 @@ if [ "${FORCE_UPDATE}" == "true" ]; then
 		if [ ! -f ${DATA_DIR}/modules/modules.txt ]; then
 			cp /tmp/modules.txt ${DATA_DIR}/modules/modules.txt
 		fi
+	fi
 else
 	if [ -z "$CUR_V" ]; then
 		echo "---MagicMirror² not found!---"
