@@ -202,6 +202,7 @@ if [ ! -f ${DATA_DIR}/config/config.js ]; then
 else
 	echo "---Configuration file found!---"
 fi
+
 echo "---Please wait, permissions are set, this can take some time...---"
 chmod -R ${DATA_PERM} ${DATA_DIR}
 
