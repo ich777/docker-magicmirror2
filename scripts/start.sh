@@ -18,12 +18,10 @@ fi
 echo "---Starting...---"
 chown -R ${UID}:${GID} /opt/scripts
 chown -R ${UID}:${GID} ${DATA_DIR}
-killpid=0
+
 term_handler() {
-	if [ $killpid -ne 0 ]; then
-		kill -SIGTERM "$killpid"
-		wait "$killpid"
-	fi
+	kill -SIGTERM "$(pidof node)"
+	tail --pid="$(pidof node)" -f 2>/dev/null
 	exit 143;
 }
 
@@ -32,8 +30,6 @@ su ${USER} -c "/opt/scripts/start-server.sh" &
 killpid="$!"
 while true
 do
-	if ! pgrep -f start-server.sh >/dev/null ; then
-		exit 0
-	fi
-	sleep 5
+	wait $killpid
+	exit 0;
 done
