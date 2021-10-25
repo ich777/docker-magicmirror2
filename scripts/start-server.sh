@@ -121,7 +121,8 @@ if [ ! -d ${DATA_DIR}/.npm ]; then
 				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//Y /}
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-				npm install
+				npm init -y
+				npm install request --save
 			else
 				cd ${DATA_DIR}/modules
 				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
@@ -132,7 +133,8 @@ if [ ! -d ${DATA_DIR}/.npm ]; then
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git pull
-				npm install
+				npm init -y
+				npm install request --save
 			else
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
@@ -154,7 +156,8 @@ elif [ "${FORCE_UPDATE_MODULES}" == "true" ]; then
 				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//Y /}
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-				npm install
+				npm init -y
+				npm install request --save
 			else
 				cd ${DATA_DIR}/modules
 				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
@@ -165,7 +168,8 @@ elif [ "${FORCE_UPDATE_MODULES}" == "true" ]; then
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git pull
-				npm install
+				npm init -y
+				npm install request --save
 			else
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
@@ -183,7 +187,8 @@ else
 				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//Y /}
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
-				npm install
+				npm init -y
+				npm install request --save
 			else
 				cd ${DATA_DIR}/modules
 				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
