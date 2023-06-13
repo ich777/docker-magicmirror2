@@ -3,6 +3,8 @@ FROM ich777/debian-baseimage:bullseye_amd64
 LABEL org.opencontainers.image.authors="admin@minenet.at"
 LABEL org.opencontainers.image.source="https://github.com/ich777/docker-magicmirror2"
 
+WORKDIR /node_modules
+
 RUN apt-get update && \
 	apt-get -y install --no-install-recommends curl git-core && \
 	curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
