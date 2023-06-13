@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.source="https://github.com/ich777/docker-magicmir
 RUN apt-get update && \
 	apt-get -y install --no-install-recommends curl git-core && \
 	curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-	apt-get -y install --no-install-recommends nodejs npm && \
+	apt-get -y install --no-install-recommends nodejs && \
 	npm install express valid-url moment feedme iconv-lite express-ipfilter && \
 	rm -rf /var/lib/apt/lists/*
 
