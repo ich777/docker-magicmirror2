@@ -2,8 +2,13 @@
 CUR_V="$(find ${DATA_DIR} -maxdepth 1 -name installedv* | cut -d 'd' -f2)"
 LAT_V="$(curl -s https://api.github.com/repos/MichMich/MagicMirror/releases/latest | grep tag_name | cut -d '"' -f4)"
 if [ -z $LAT_V ]; then
+  if [ ! -z "$CUR_V" ]; then
+    echo "---Can't get latest version of uNmINeD-GUI falling back to v$CUR_V---"
+    LAT_V="$CUR_V"
+  else
 	echo "---Can't get latest version number, putting server into sleep mode---"
 	sleep infinity
+  fi
 fi
 
 if [ "${FORCE_UPDATE}" == "true" ]; then
