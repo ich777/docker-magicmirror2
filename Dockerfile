@@ -7,7 +7,7 @@ WORKDIR /tmp
 
 RUN apt-get update && \
 	apt-get -y install --no-install-recommends curl git-core && \
-	curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+	curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
 	apt-get -y install --no-install-recommends nodejs && \
 	npm install express valid-url moment feedme iconv-lite express-ipfilter && \
 	rm -rf /var/lib/apt/lists/*
