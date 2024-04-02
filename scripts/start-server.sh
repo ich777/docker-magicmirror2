@@ -128,10 +128,12 @@ if [ ! -d ${DATA_DIR}/.npm ]; then
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				npm init -y
 				npm install request --save
+				git submodule update --init --recursive
 			else
 				cd ${DATA_DIR}/modules
 				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//N /}
+				git submodule update --init --recursive
 			fi
 		else
 			if [[ $line = \Y* ]]; then
@@ -140,10 +142,12 @@ if [ ! -d ${DATA_DIR}/.npm ]; then
 				git pull
 				npm init -y
 				npm install request --save
+				git submodule update --init --recursive
 			else
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git pull
+				git submodule update --init --recursive
 			fi
 		fi
 	done; }
@@ -163,10 +167,12 @@ elif [ "${FORCE_UPDATE_MODULES}" == "true" ]; then
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				npm init -y
 				npm install request --save
+				git submodule update --init --recursive
 			else
 				cd ${DATA_DIR}/modules
 				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//N /}
+				git submodule update --init --recursive
 			fi
 		else
 			if [[ $line = \Y* ]]; then
@@ -175,10 +181,12 @@ elif [ "${FORCE_UPDATE_MODULES}" == "true" ]; then
 				git pull
 				npm init -y
 				npm install request --save
+				git submodule update --init --recursive
 			else
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				echo "---Updating '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git pull
+				git submodule update --init --recursive
 			fi
 		fi
 	done; }
@@ -194,10 +202,12 @@ else
 				cd ${DATA_DIR}/modules/"$(echo "$(echo ${line##*/} | cut -d '.' -f1)")"
 				npm init -y
 				npm install request --save
+				git submodule update --init --recursive
 			else
 				cd ${DATA_DIR}/modules
 				echo "---Downloading '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")'---"
 				git clone ${line//N /}
+				git submodule update --init --recursive
 			fi
 		else
 			echo "Module '$(echo "$(echo ${line##*/} | cut -d '.' -f1)")' found!"
