@@ -1,3 +1,5 @@
+# DEPRECATED - not maintained anymore
+
 # MagicMirror² in Docker optimized for Unraid
 This Container will download and install MagicMirror².
 
