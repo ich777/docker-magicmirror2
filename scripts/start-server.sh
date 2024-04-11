@@ -1,4 +1,13 @@
 #!/bin/bash
+echo "+--- WARNING --- WARNING --- WARNING ---"
+echo "|"
+echo "| This container is deprecated and not"
+echo "| maintained any longer! The container"
+echo "| will continue the start in 10 seconds."
+echo "|"
+echo "+--- WARNING --- WARNING --- WARNING ---"
+sleep 10
+
 CUR_V="$(find ${DATA_DIR} -maxdepth 1 -name installedv* | cut -d 'd' -f2)"
 LAT_V="$(curl -sL https://api.github.com/repos/MichMich/MagicMirror/releases/latest | grep tag_name | cut -d '"' -f4)"
 if [ -z $LAT_V ]; then
